@@ -1,0 +1,13 @@
+{
+  "name": "physics-report-agent",
+  "version": "1.0.0",
+  "description": "物理实验报告自动生成智能体 - 华为开发者大赛参赛作品",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --env-file=.env --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

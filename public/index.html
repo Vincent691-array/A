@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物理实验动画学习助手</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>⚡ 物理实验动画学习助手</h1>
+      <div class="exp-select">
+        <label>选择实验：</label>
+        <select id="expType"></select>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <aside class="sidebar">
+        <div class="phase-tabs">
+          <button class="phase-tab active" data-phase="principle">🔬 原理演示</button>
+          <button class="phase-tab" data-phase="procedure">🛠️ 操作步骤</button>
+          <button class="phase-tab" data-phase="data">📊 数据记录</button>
+        </div>
+        <div class="step-list" id="stepList"></div>
+        <div class="exp-info" id="expInfo"></div>
+      </aside>
+
+      <section class="stage">
+        <div id="anim3dContainer" class="anim-3d-container"></div>
+        <canvas id="animCanvas" width="800" height="500"></canvas>
+        <div class="stage-overlay" id="stepTitle"></div>
+        <div class="controls">
+          <button id="prevBtn" class="ctrl-btn">⏮ 上一步</button>
+          <button id="playBtn" class="ctrl-btn primary">▶ 播放</button>
+          <button id="nextBtn" class="ctrl-btn">下一步 ⏭</button>
+          <button id="resetBtn" class="ctrl-btn">↺ 重置</button>
+          <button id="viewToggle" class="ctrl-btn">🎬 3D</button>
+          <div class="speed-ctrl">
+            <label>速度</label>
+            <input type="range" id="speedSlider" min="0.25" max="3" step="0.25" value="1">
+            <span id="speedLabel">1.0x</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="explain-panel">
+        <h3 id="explainTitle">步骤说明</h3>
+        <div id="explainContent" class="explain-content"></div>
+      </aside>
+    </main>
+
+    <section class="card calc-section" id="calcSection" hidden>
+      <h2>数据处理</h2>
+      <div class="input-row" id="paramInputs"></div>
+      <div class="input-row" id="errorInputs"></div>
+      <table id="dataTable">
+        <thead id="dataHead"></thead>
+        <tbody id="dataBody"></tbody>
+      </table>
+      <button id="addRow" class="btn-small">+ 添加一行</button>
+      <div class="actions">
+        <button id="analyzeBtn">计算结果</button>
+        <button id="generateBtn" class="primary">生成报告</button>
+      </div>
+    </section>
+
+    <section class="card" id="resultSection" hidden>
+      <h2>计算结果</h2>
+      <div id="resultContent"></div>
+      <div id="chartArea" hidden>
+        <h3 id="chartTitle">线性拟合图</h3>
+        <canvas id="fitChart" width="800" height="400"></canvas>
+      </div>
+    </section>
+
+    <section class="card" id="reportSection" hidden>
+      <h2>实验报告</h2>
+      <div id="reportContent"></div>
+      <button id="copyBtn" class="btn-small">复制报告</button>
+    </section>
+
+    <section class="card" id="errorSection" hidden>
+      <h2>错误</h2>
+      <p id="errorText" class="error"></p>
+    </section>
+  </div>
+
+  <script src="animations/engine.js"></script>
+  <script src="animations/equipment.js"></script>
+  <script src="animations/pendulum.js"></script>
+  <script src="animations/newtonRing.js"></script>
+  <script src="animations/voltAmpere.js"></script>
+  <script src="animations/youngModulus.js"></script>
+  <script src="animations/hallEffect.js"></script>
+  <script src="animations/momentOfInertia.js"></script>
+  <script src="animations/soundSpeed.js"></script>
+  <script src="animations/photoelectric.js"></script>
+  <script src="animations/michelson.js"></script>
+  <script src="animations/heatEngine.js"></script>
+  <script src="animations/thermalConductivity.js"></script>
+  <script src="animations/wedgeInterference.js"></script>
+  <script src="animations/oscilloscope.js"></script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "./vendor/controls/OrbitControls.js"
+    }
+  }
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
